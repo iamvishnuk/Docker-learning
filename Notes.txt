@@ -1,0 +1,30 @@
+1. Docker Build
+  > docker build -t <tag_name>
+
+2. Docker Run
+  > docker run -d <image_name | image_id>
+    # -d ---> detach mode
+  > docker run -p 4000:4000 -d <image_id>
+    # -p ---> port mapping
+
+3. List all running containers
+  > docker ps
+
+4. Logs
+  > docker logs <image_id> -f
+    # -f ---> print the logs of the container
+
+5. Volume mount for realtime updates
+  > docker run %cd%:/app -p 4000:4000 -d <image_id | image_name>
+    # %cd% ---> this the current directory with the /app inside the container
+
+6. Development and Production
+  # Production
+    > docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up -d 
+    > docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml down -d 
+  # Development
+    > docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up -d 
+    > docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml down -d 
+
+# docker run --rm <IMAGE>
+  > To automatically remove containers when they exit, add the --rm flag when running a container
