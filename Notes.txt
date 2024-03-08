@@ -28,3 +28,4 @@
 
 # docker run --rm <IMAGE>
   > To automatically remove containers when they exit, add the --rm flag when running a container
+  dfsf
