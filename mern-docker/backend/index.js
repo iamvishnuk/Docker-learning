@@ -21,7 +21,6 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
   console.log("Hello World!".rainbow);
-
   res.send("Hello World!");
 });
 
@@ -38,7 +37,6 @@ app.post("/api/anime", async (req, res) => {
 
 app.listen(8000, () => {
   console.log("server listening on port 8000");
-
   // connect to the database
   connect();
 });
