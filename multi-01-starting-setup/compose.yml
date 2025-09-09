@@ -1,0 +1,35 @@
+services:
+  mongodb:
+    image: "mongo"
+    volumes:
+      - data:/data/db
+    env_file:
+      - ./env/env.mongo
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app
+      - /app/node_modules
+    env_file:
+      - ./env/env.backend
+    depends_on:
+      - mongodb
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/src:/app/src
+    depends_on:
+      - backend
+
+volumes:
+  data:
+  logs:

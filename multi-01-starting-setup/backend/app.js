@@ -12,7 +12,7 @@ const app = express();
 
 const accessLogStream = fs.createWriteStream(
   path.join(__dirname, "logs", "access.log"),
-  { flags: "a" },
+  { flags: "a" }
 );
 
 app.use(morgan("combined", { stream: accessLogStream }));
@@ -91,11 +91,13 @@ mongoose.connect(
   },
   (err) => {
     if (err) {
+      console.log("process.env.MONGODB_PASSWORD", process.env.MONGODB_PASSWORD);
+      console.log("process.env.MONGODB_USERNAME", process.env.MONGODB_USERNAME);
       console.error("FAILED TO CONNECT TO MONGODB");
       console.error(err);
     } else {
       console.log("CONNECTED TO MONGODB");
       app.listen(8000, () => console.log("Server listening on port 8000"));
     }
-  },
+  }
 );

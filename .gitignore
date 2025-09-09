@@ -1,2 +1,3 @@
 # ignore all the node modules inside the subdirectories
 **/node_modules/
+**/env/
